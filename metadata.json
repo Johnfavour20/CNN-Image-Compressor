@@ -1,0 +1,5 @@
+{
+  "name": "CNN Medical Image Compressor",
+  "description": "A web-based platform to compress high-resolution medical images using a simulated CNN-based engine, preserving diagnostic quality while optimizing for storage and transmission.",
+  "requestFramePermissions": []
+}
