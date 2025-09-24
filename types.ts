@@ -14,6 +14,13 @@ export interface CompressionResult {
   metrics: CompressionMetrics;
 }
 
+export interface DecompressionResult {
+  decompressedImageUrl: string;
+  metrics: {
+    processingTime: number; // in seconds
+  };
+}
+
 export interface HistoryEntry extends CompressionResult {
   id: string;
   originalImage: {

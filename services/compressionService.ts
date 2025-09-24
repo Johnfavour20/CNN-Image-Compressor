@@ -1,5 +1,5 @@
 
-import { CompressionResult, CompressionMetrics } from '../types';
+import { CompressionResult, CompressionMetrics, HistoryEntry, DecompressionResult } from '../types';
 
 // Utility to read a file as a Data URL
 const readFileAsDataURL = (file: File): Promise<string> => {
@@ -65,5 +65,25 @@ export const simulateCompression = async (file: File, quality: number): Promise<
   return {
     compressedImageUrl: originalImageUrl,
     metrics,
+  };
+};
+
+// Mock service to simulate CNN decompression
+export const simulateDecompression = async (entry: HistoryEntry): Promise<DecompressionResult> => {
+  const startTime = performance.now();
+
+  // 1. Simulate network and processing delay (1-3 seconds)
+  const delay = Math.random() * 2000 + 1000;
+  await new Promise(resolve => setTimeout(resolve, delay));
+
+  const endTime = performance.now();
+  const processingTime = (endTime - startTime) / 1000;
+
+  // 2. In this simulation, decompression perfectly restores the original image.
+  return {
+    decompressedImageUrl: entry.originalImage.url,
+    metrics: {
+      processingTime,
+    },
   };
 };
